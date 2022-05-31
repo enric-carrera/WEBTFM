@@ -1,0 +1,48 @@
+{% extends "base.html" %}
+
+{% load static %}
+
+{% block page_content %}
+
+<div class="row" style="align-items:center">
+
+    <h1 style="margin-right:20px">Clients</h1>
+
+    <a href="{% url 'add_client' %}" style="text-align:center">Add client +</a>
+
+</div>
+
+
+<div class="row">
+
+{% for client in clients %}
+
+    <div class="col-md-4">
+
+        <div class="card mb-2">
+
+            <img class="card-img-top" src="{% static client.image %}">
+
+            <div class="card-body">
+
+                <h5 class="card-title">{{ client.company }}</h5>
+
+                <a href="{% url 'client_detail' client.pk %}"
+
+                   class="btn btn-primary">
+
+                    Read More
+
+                </a>
+
+            </div>
+
+        </div>
+
+    </div>
+
+    {% endfor %}
+
+</div>
+
+{% endblock %}

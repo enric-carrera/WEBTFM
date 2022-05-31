@@ -1,0 +1,43 @@
+{% extends "base.html" %}
+
+{% block page_content %}
+
+    <form action="/add_client/" method="post">
+
+        {% csrf_token %}
+
+        <div class="form-group">
+
+            {{ form.company }}
+
+        </div>
+
+        <div class="form-group">
+
+            {{ form.description }}
+
+        </div>
+
+	<div class="form-group">
+
+            {{ form.budget }}
+
+        </div>
+
+	<div class="form-group">
+
+            {{ form.expiration_date }}
+
+        </div>
+
+	<div class="form-group">
+
+            {{ form.image }}
+
+        </div>
+
+        <button type="submit" class="btn btn-primary">Submit</button>
+
+    </form>
+
+{% endblock %}

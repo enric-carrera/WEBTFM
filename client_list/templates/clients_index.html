@@ -1,0 +1,58 @@
+{% extends "base.html" %}
+
+{% load static %}
+
+{% block page_content %}
+
+<div class="row" style="align-items:center">
+
+    <h1 style="margin-right:20px">Clients</h1>
+
+    <a href="{% url 'add_client' %}" style="text-align:center">Add client +</a>
+
+</div>
+
+
+<div class="row">
+
+{% for client in clients %}
+
+    <div class="col-md-4">
+
+        <div class="card mb-2">
+
+            <img class="card-img-top" src="{% static client.image %}">
+
+            <div class="card-body">
+
+                <h5 class="card-title">{{ client.company }}</h5>
+
+		<div style="align-items:center;display:flex;justify-content:space-between">
+   
+                    <a style="margin-right:30px" href="{% url 'client_detail' client.pk %}"
+
+                       class="btn btn-primary">
+
+                        Read More
+
+                    </a>
+
+ 		    <a href="{% url 'eliminate_client' client.pk %}" style="text-align:center;color:red">
+ 
+                        Eliminate
+
+                    </a>
+
+		</div>
+
+            </div>
+
+        </div>
+
+    </div>
+
+    {% endfor %}
+
+</div>
+
+{% endblock %}

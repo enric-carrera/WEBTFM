@@ -1,0 +1,22 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block page_content %}
+<h1>{{ client.company }}</h1>
+<div class="row">
+    <div class="col-md-8">
+        <img src="{% static client.image %}" alt="" width="100%">
+    </div>
+    <div class="col-md-4">
+        <h5>Contract description:</h5>
+        <p>{{ client.description }}</p>
+        <br>
+        <h5>Budget:</h5>
+        <p>{{ client.budget }}€</p>
+	<h5>Contract expiration date:</h5>
+        <p>{{ client.expiration_date }}</p>
+
+    </div>
+</div>
+{% endblock %}
+

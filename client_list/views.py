@@ -8,7 +8,7 @@ from .forms import AddClientForm
 def clients_index(request):
 
     clients = Client.objects.all()
-    print(clients[0].image)
+    
     context = {
 
         'clients': clients

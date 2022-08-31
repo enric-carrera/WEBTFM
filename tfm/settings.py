@@ -23,7 +23,7 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 SECRET_KEY = 'django-insecure-62d8s5)&tg8m9wziieufyzt&(d8u)3wyp9(tv+34yyvbpl&46v'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = False
+DEBUG = True
 
 ALLOWED_HOSTS = ['*']
 
@@ -41,6 +41,7 @@ INSTALLED_APPS = [
 ]
 
 MIDDLEWARE = [
+    'csp.middleware.CSPMiddleware',
     'django.middleware.security.SecurityMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
     'django.middleware.common.CommonMiddleware',
@@ -125,3 +126,16 @@ DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
 LOGIN_REDIRECT_URL = "/"
 LOGOUT_REDIRECT_URL = "/"
+
+
+# Content Security Policy
+
+CSP_IMG_SRC = ("'self'",'https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css','https://code.jquery.com/jquery-3.3.1.slim.min.js','https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js','https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js')
+
+CSP_STYLE_SRC = ("'self'",'https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css','https://code.jquery.com/jquery-3.3.1.slim.min.js','https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js','https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js')
+
+CSP_SCRIPT_SRC = ("'self'",'https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css','https://code.jquery.com/jquery-3.3.1.slim.min.js','https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js','https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js')
+
+
+CSRF_COOKIE_HTTPONLY = True
+

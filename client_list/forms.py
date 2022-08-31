@@ -1,6 +1,6 @@
 from django import forms
 
-typeChoices = (("img/company1.png","type 1"),("img/company21.png","type 2"),) 
+typeChoices = (("img/company1.png","tech"),("img/company2.png","non-tech"),) 
 
 class AddClientForm(forms.Form):
 

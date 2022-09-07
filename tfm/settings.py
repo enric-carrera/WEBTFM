@@ -23,12 +23,14 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 SECRET_KEY = 'django-insecure-62d8s5)&tg8m9wziieufyzt&(d8u)3wyp9(tv+34yyvbpl&46v'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+DEBUG = False
 
 ALLOWED_HOSTS = ['*']
 
 
 # Application definition
+
+
 
 INSTALLED_APPS = [
     'django.contrib.admin',
@@ -38,6 +40,7 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'client_list',
+    'axes',
 ]
 
 MIDDLEWARE = [
@@ -49,6 +52,7 @@ MIDDLEWARE = [
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
+    'axes.middleware.AxesMiddleware',
 ]
 
 ROOT_URLCONF = 'tfm.urls'
@@ -139,3 +143,15 @@ CSP_SCRIPT_SRC = ("'self'",'https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/c
 
 CSRF_COOKIE_HTTPONLY = True
 
+
+AUTHENTICATION_BACKENDS = [
+    'axes.backends.AxesBackend',
+    'django.contrib.auth.backends.ModelBackend',
+]
+
+from datetime import timedelta
+
+AXES_FAILURE_LIMIT = 3
+AXES_COOLOFF_TIME = timedelta(minutes=1)
+AXES_LOCK_OUT_BY_COMBINATION_USER_AND_IP = True
+#AXES_LOCKOUT_TEMPLATE = 'tfm/templates/lockout.html'
